@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<!--    Device Sync Tree View-->
+    <record id="device_sync" model="ir.ui.view">
+        <field name="name">device.sync.tree</field>
+        <field name="model">device.sync</field>
+        <field name="arch" type="xml">
+            <tree string="Device Sync">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="code"/>
+                <field name="expire_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+<!--    Device Sync Form View-->
+    <record id="device_sync_form" model="ir.ui.view">
+        <field name="name">device.sync.form</field>
+        <field name="model">device.sync</field>
+        <field name="arch" type="xml">
+            <form string="Device Sync">
+                <sheet>
+                    <group>
+                        <field name="id"/>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="code"/>
+                        <field name="expire_date"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--    Action For Device View-->
+    <record id="action_device" model="ir.actions.act_window">
+        <field name="name">Device Sync</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">device.sync</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Device CSV SYNC Process
+            </p>
+        </field>
+    </record>
+
+<!--    Menu Item For Device View-->
+    <menuitem id="menu_device_view" name="Device" parent="csv_sync.menu_csv_sync" sequence="16"
+              action="csv_sync.action_device"/>
+
+</odoo>

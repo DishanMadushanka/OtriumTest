@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<!--    Content Tree View-->
+    <record id="content_sync" model="ir.ui.view">
+        <field name="name">content.sync.tree</field>
+        <field name="model">content.sync</field>
+        <field name="arch" type="xml">
+            <tree string="Content Sync">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="device"/>
+                <field name="expire_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+<!--    Content Form View-->
+    <record id="content_sync_form" model="ir.ui.view">
+        <field name="name">content.sync.form</field>
+        <field name="model">content.sync</field>
+        <field name="arch" type="xml">
+            <form string="Content Sync">
+                <sheet>
+                    <group>
+                        <field name="id"/>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="device"/>
+                        <field name="expire_date"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+<!--    Action For View-->
+    <record id="action_view_content" model="ir.actions.act_window">
+        <field name="name">Content Sync</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">content.sync</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Content CSV SYNC Process
+            </p>
+        </field>
+    </record>
+
+<!--    Menu Item For Main Model-->
+    <menuitem id="menu_csv_sync" web_icon="csv_sync,static/description/icon.png" name="CSV Sync" sequence="25"/>
+
+<!--    Menu Item For Content View-->
+    <menuitem id="menu_content_view" name="Content" parent="csv_sync.menu_csv_sync" sequence="15"
+              action="csv_sync.action_view_content"/>
+
+
+</odoo>
