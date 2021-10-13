@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.sync</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="85"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="sync_settings_block" data-string="SyncSettings" string="SyncSettings">
+                        <h2>Sync Settings</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box" title="You can setup a generic email alias to create incoming expenses easily. Write an email with the receipt in attachment to create an expense line in one click. If the mail subject contains the product's internal reference between brackets, the product will be set automatically. Type the expense amount in the mail subject to set it on the expense too.">
+                                <div class="o_setting_left_pane">
+                                    <field name="delimiter"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label string="Delimiter" for="delimiter"/>
+                                    <div class="text-muted">
+                                        Select Delimiter
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <label for="expense_alias_prefix" string="Email Alias" class="o_light_label"/>
+                                            <field name="expense_alias_prefix" class="oe_inline"/>
+                                        </div>
+                                    </div>
+                                    <div class="content-group" attrs="{'invisible': ['|', ('use_mailgateway', '=',  False), ('alias_domain', 'not in', ['localhost', '', False])]}">
+                                        <div class="mt16">
+                                            <button type="action" name="base_setup.action_general_configuration" icon="fa-arrow-right" string="Setup your domain alias" class="btn-link"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_hr_expense_configuration" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'hr_expense'}</field>
+        </record>
+
+        <menuitem id="menu_hr_expense_global_settings" name="Settings"
+            parent="menu_hr_expense_configuration" sequence="0" action="action_hr_expense_configuration" groups="base.group_system"/>
+    </data>
+</odoo>
