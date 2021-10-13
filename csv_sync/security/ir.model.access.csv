@@ -3,4 +3,5 @@ access_content_sync,access.csv.sync,model_content_sync,,1,1,1,1
 access_device_sync,access.csv.sync,model_device_sync,,1,1,1,1
 access_settings_file,access.csv.sync,model_sync_settings,,1,1,1,1
 access_settings_file,access.csv.sync,model_csv_download_device,,1,1,1,1
+access_settings_file,access.csv.sync,model_setting_file,,1,1,1,1
 

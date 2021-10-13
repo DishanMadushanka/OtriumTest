@@ -50,10 +50,12 @@ class csv_import(models.TransientModel):
 
     @api.multi
     def import_csv_content(self):
-        delimiter = ','
+        # You need to Set Configurations In Settings
+        setting = self.env['setting.file'].search([('active', '=', True)], limit=1)
+        delimiter = setting.delimiter
         header = ['id', 'name', 'description', 'device/id', 'expire_date', 'state']
         # Add Your CSV File Here You Can Set Any Local Path Here
-        csv_file_path = os.path.join(os.path.dirname(__file__), 'content_import.csv')
+        csv_file_path = os.path.join(setting.local_path, 'content_import.csv')
         report_data = open(csv_file_path, 'rb+')
         file = report_data.read()
         data_file = io.TextIOWrapper(io.BytesIO(file), encoding="utf-8-sig")

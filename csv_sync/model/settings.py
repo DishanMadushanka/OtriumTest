@@ -3,9 +3,10 @@ import logging
 from datetime import datetime, date
 
 
-class settings(models.TransientModel):
-    _inherit = 'res.config.settings'
+class settings(models.Model):
+    _name = 'setting.file'
 
-    delimiter = fields.Selection([(',', 'comma'), ('; ', 'semicolon'),('|', 'pipe')],
-                                 required=True, default=',', string="Delimiter")
-    local_path = fields.Binary('Local Path')
+    delimiter = fields.Selection([(',', 'comma'), ('; ', 'semicolon'), ('|', 'pipe')],
+                                 required=True, default=',')
+    local_path = fields.Char('Local Path')
+    active = fields.Boolean(string="Active")

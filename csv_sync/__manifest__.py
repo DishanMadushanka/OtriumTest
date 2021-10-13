@@ -24,7 +24,7 @@
         'data/ir_cron.xml',
         'view/content_view.xml',
         'view/device_view.xml',
-        # 'view/settings_form.xml',
+        'view/settings_form.xml',
         'wizard/csv_content_import_view.xml',
         'wizard/csv_device_import_view.xml',
     ],
